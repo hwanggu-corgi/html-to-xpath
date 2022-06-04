@@ -5,9 +5,39 @@ const {
 
 beforeAll(() => {
   const rawHTML = `
-
-
-  `;
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>HTML 5 Boilerplate</title>
+      <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+      <header class="headerElement">
+        <nav>
+          <ul>
+            <li>hi</li>
+            <li>hello</li>
+          </ul>
+        </nav>
+      </header>
+      <main class="mainElement">
+        <ul>
+          <li>
+            <span>hi</span>
+            <ul>
+              <li>nested</li>
+              <li class="testElementNested">nested 2</li>
+            </ul>
+          </li>
+          <li>hello</li>
+        </ul>
+      </main>
+      <script src="index.js"></script>
+    </body>
+  </html>`;
   const dom =  new JSDOM(rawHTML);
 })
 
