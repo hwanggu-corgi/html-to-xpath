@@ -48,27 +48,27 @@ test("Should raise error when arguement is not HTMLElement", () => {
   expect(() => htmlToXpath("a")).toThrow(Error);
 });
 
-test("Should raise error when arguement is an HTMLElement NOT in visible DOM", () => {
+test.only("Should raise error when arguement is an HTMLElement NOT in visible DOM", () => {
   const danglingElement = jsdom.window.document.createElement("a");
   expect(() => htmlToXpath(danglingElement)).toThrow(Error);
 });
 
-test("Should return correct xpath if selected body", () => {
-  const expected = "//html/body[1]/";
+test.only("Should return correct xpath if selected body", () => {
+  const expected = "//html/body[1]";
   const result = htmlToXpath(jsdom.window.document.querySelector("body"));
 
   expect(result).toBe(expected);
 });
 
-test("Should return correct xpath if selected a child node", () => {
-  const expected = "//html/body[1]/header[1]/ul[1]/li[1]";
+test.only("Should return correct xpath if selected a child node", () => {
+  const expected = "//html/body[1]/header[1]/nav[1]/ul[1]/li[1]";
   const result = htmlToXpath(jsdom.window.document.querySelector("header .testElement"));
 
   expect(result).toBe(expected);
   expect
 });
 
-test("Should return correct xpath if selected deeply nested child node", () => {
+test.only("Should return correct xpath if selected deeply nested child node", () => {
   const expected = "//html/body[1]/main[1]/ul[1]/li[1]/ul[1]/li[2]";
   const result = htmlToXpath(jsdom.window.document.querySelector("main .testElementNested"));
 
