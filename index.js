@@ -1,4 +1,4 @@
-exports.htmlToXpath = function(htmlElement) {
+function htmlToXpath(htmlElement) {
   let res = "";
   let current = htmlElement
 
@@ -27,3 +27,5 @@ exports.htmlToXpath = function(htmlElement) {
 
   return res;
 }
+
+module.exports = htmlToXpath;
