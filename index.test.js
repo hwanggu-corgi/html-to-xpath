@@ -3,6 +3,8 @@ const {
   JSDOM
 } = require("jsdom");
 
+let jsdom;
+
 beforeAll(() => {
   const rawHTML = `
   <!DOCTYPE html>
@@ -18,7 +20,7 @@ beforeAll(() => {
       <header class="headerElement">
         <nav>
           <ul>
-            <li>hi</li>
+            <li class="testElement">hi</li>
             <li>hello</li>
           </ul>
         </nav>
@@ -38,7 +40,7 @@ beforeAll(() => {
       <script src="index.js"></script>
     </body>
   </html>`;
-  const dom =  new JSDOM(rawHTML);
+  jsdom =  new JSDOM(rawHTML);
 })
 
 
@@ -52,11 +54,17 @@ test("Should raise error when arguement is an HTMLElement NOT in visible DOM", (
 });
 
 test("Should return correct xpath if selected body", () => {
+  const expected = "//html/body[1]/";
+  const result = htmlToXpath(jsdom.window.document.querySelector("body"));
 
+  expect(result).toBe(expected);
 });
 
 test("Should return correct xpath if selected a child node", () => {
+  const expected = "//html/body[1]/header[1]/ul[1]/li[1]";
+  const result = htmlToXpath(jsdom.window.document.querySelector("header li:first-child"));
 
+  expect(result).toBe(expected);
 });
 
 test("Should return correct xpath if selected deeply nested child node", () => {
