@@ -65,7 +65,6 @@ test.only("Should return correct xpath if selected a child node", () => {
   const result = htmlToXpath(jsdom.window.document.querySelector("header .testElement"));
 
   expect(result).toBe(expected);
-  expect
 });
 
 test.only("Should return correct xpath if selected deeply nested child node", () => {
@@ -74,3 +73,4 @@ test.only("Should return correct xpath if selected deeply nested child node", ()
 
   expect(result).toBe(expected);
 });
+
